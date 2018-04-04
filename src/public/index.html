@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Chat Javascript FullStack</title>
+    <!-- BOOTSTRAP 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-light bg-warning">
+      <a class="navbar-brand mx-auto" href="/">Javascript FullStack Chat</a>
+    </nav>
+
+    <div class="container">
+
+      <div class="col-md-6 mt-4 mx-auto">
+
+        <!-- CHAT CONTAINER -->
+        <div class="card">
+          <!-- CARD HEADER-->
+          <div class="card-header">
+            <h4>Let's Chat</h3>
+          </div>
+
+          <!-- CARD BODY-->
+          <div id="chat" class="card-body"></div>
+
+          <!-- CARD FOOTER -->
+          <form id="message-form" class="card-footer">
+            <div class="input-group">
+              <input type="text" id="message" class="form-control"/>
+              <div class="input-group-append">
+                <input type="submit" class="btn btn-warning"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
