@@ -1,8 +1,14 @@
+const Chat = require('./models/Chat');
+
 module.exports = io => {
 
   let users = {};
 
-  io.sockets.on('connection', socket => {
+  io.on('connection', async socket => {
+
+    let messages = await Chat.find({}).limit(8).sort('-created');
+
+    socket.emit('load old msgs', messages);
 
     socket.on('new user', (data, cb) => {
       if (data in users) {
@@ -16,7 +22,7 @@ module.exports = io => {
     });
 
     // receive a message a broadcasting
-    socket.on('send message', (data, cb) => {
+    socket.on('send message', async (data, cb) => {
       var msg = data.trim();
 
       if (msg.substr(0, 3) === '/w ') {
@@ -37,6 +43,12 @@ module.exports = io => {
           cb('Error! Please enter your message');
         }
       } else {
+        var newMsg = new Chat({
+          msg,
+          nick: socket.nickname
+        });
+        await newMsg.save();
+      
         io.sockets.emit('new message', {
           msg,
           nick: socket.nickname

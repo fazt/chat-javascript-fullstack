@@ -43,7 +43,7 @@ $(function () {
     });
 
     socket.on('new message', data => {
-      $chat.append(`<p class="msg"><b>${data.nick}</b>: ${data.msg}</p>`);
+      displayMsg(data);
     });
 
     socket.on('usernames', data => {
@@ -57,5 +57,15 @@ $(function () {
     socket.on('whisper', data => {
       $chat.append(`<p class="whisper"><b>${data.nick}</b>: ${data.msg}</p>`);
     });
+
+    socket.on('load old msgs', msgs => {
+      for(let i = msgs.length -1; i >=0 ; i--) {
+        displayMsg(msgs[i]);
+      }
+    });
+
+    function displayMsg(data) {
+      $chat.append(`<p class="msg"><b>${data.nick}</b>: ${data.msg}</p>`);
+    }
 
 });
