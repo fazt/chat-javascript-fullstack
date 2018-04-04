@@ -5,6 +5,8 @@
     <title>Chat Javascript FullStack</title>
     <!-- BOOTSTRAP 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/css/main.css" />
   </head>
@@ -14,29 +16,55 @@
       <a class="navbar-brand mx-auto" href="/">Javascript FullStack Chat</a>
     </nav>
 
-    <div class="container">
+    <div id="nickWrap" class="card col-md-4 mx-auto mt-5">
+      <div class="card-header">
+        <h3>Enter your Username</h3>
+      </div>
+      <p id="nickError"></p>
+      <div class="card-body">
+        <form id="nickForm">
+          <input id="nickname" type="text" class="form-control"/>
+          <input type="submit" class="btn btn-warning btn-block mt-2"/>
+        </form>
+      </div>
+    </div>
 
-      <div class="col-md-6 mt-4 mx-auto">
+    <div class="container" id="contentWrap">
+      <div class="row mt-5">
 
-        <!-- CHAT CONTAINER -->
-        <div class="card">
-          <!-- CARD HEADER-->
-          <div class="card-header">
-            <h4>Let's Chat</h3>
-          </div>
-
-          <!-- CARD BODY-->
-          <div id="chat" class="card-body"></div>
-
-          <!-- CARD FOOTER -->
-          <form id="message-form" class="card-footer">
-            <div class="input-group">
-              <input type="text" id="message" class="form-control"/>
-              <div class="input-group-append">
-                <input type="submit" class="btn btn-warning"/>
-              </div>
+        <div class="col-md-6 offset-md-1">
+          <!-- CHAT CONTAINER -->
+          <div class="card">
+            <!-- CARD HEADER-->
+            <div class="card-header">
+              <h4>Let's Chat</h3>
             </div>
-          </form>
+
+            <!-- CARD BODY-->
+            <div id="chat" class="card-body"></div>
+
+            <!-- CARD FOOTER -->
+            <form id="message-form" class="card-footer">
+              <div class="input-group">
+                <input type="text" id="message" class="form-control"/>
+                <div class="input-group-append">
+                  <button class="btn btn-warning">
+                    <i class="fas fa-location-arrow"></i> Send
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>    
+
+        <!-- USERS SECTION-->
+        <div class="card col-md-3">
+          <div class="card-header">
+            <h3>Users</h3>
+          </div>
+          <div class="card-body">
+            <div id="usernames"></div>
+          </div>
         </div>
       </div>
 
