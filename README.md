@@ -1,6 +1,8 @@
 # Javascript Full Stack
 is a simple chat that was built with entire javascript technologies, for the frontend, backend and database. 
 
+![](./docs/chat-javascript-fullstack.jpg)
+
 # Used Technologies
 - Nodejs
   - Express
