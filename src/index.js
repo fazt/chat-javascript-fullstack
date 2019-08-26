@@ -1,32 +1,15 @@
-const express = require('express');
-const socketio = require('socket.io');
-const mongoose = require('mongoose');
-
+const app = require('./app');
 const http = require('http');
-const path = require('path');
+const socketio = require('socket.io');
 
-// initializing server and sockets
-const app = express();
-const server= http.createServer(app);
+const server = http.createServer(app);
 const io = socketio.listen(server);
-
-// connection to the server
-mongoose.connect('mongodb://localhost/chat')
-  .then(db => console.log('db connected'))
-  .catch(err => console.log(err));
-
-// settings 
-app.set('port', process.env.PORT || 3000);
-
-// static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// sockets
 require('./sockets')(io);
+require('./database');
 
-// starting the server
-server.listen(app.get('port'), () => {
+async function main() {
+  await server.listen(app.get('port'));
   console.log(`server on port ${app.get('port')}`);
-});
+}
 
-
+main();

@@ -22,6 +22,7 @@ $(function () {
         if(data) {
           $('#nickWrap').hide();
           $('#contentWrap').show();
+          $('#message').focus();
         } else {
           $nickError.html(`
             <div class="alert alert-danger">
