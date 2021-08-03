@@ -1,6 +1,6 @@
-const Chat = require('./models/Chat');
+import Chat from './models/Chat'
 
-module.exports = io => {
+export default io => {
 
   let users = {};
 

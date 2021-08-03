@@ -1,7 +1,13 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-mongoose.connect('mongodb://localhost/chat', {
-    useNewUrlParser: true
-})
-  .then(db => console.log('db connected'))
-  .catch(err => console.log(err));
+(async () => {
+  try {
+    const db = await mongoose.connect("mongodb://localhost/chat", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("connected to db:", db.connection.name);
+  } catch (error) {
+    console.error(error);
+  }
+})();

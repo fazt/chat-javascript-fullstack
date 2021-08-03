@@ -1,15 +1,13 @@
-const app = require('./app');
-const http = require('http');
-const socketio = require('socket.io');
+import app from "./app";
+import "./database";
+import http from "http";
+import socketio from "socket.io";
+import sockets from "./sockets";
 
 const server = http.createServer(app);
-const io = socketio.listen(server);
-require('./sockets')(io);
-require('./database');
+const io = socketio(server);
 
-async function main() {
-  await server.listen(app.get('port'));
-  console.log(`server on port ${app.get('port')}`);
-}
+sockets(io);
 
-main();
+server.listen(app.get("port"));
+console.log(`server on port ${app.get("port")}`);

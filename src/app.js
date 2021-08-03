@@ -1,13 +1,13 @@
-const express = require('express');
+import express from "express";
+import path from "path";
+
 const app = express();
 
-const path = require('path');
-
-// settings 
-app.set('port', process.env.PORT || 3000);
+// settings
+app.set("port", process.env.PORT || 3000);
 
 // static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 // starting the server
-module.exports = app;
+export default app;

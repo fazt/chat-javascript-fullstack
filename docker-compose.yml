@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  chatdb:
+    image: mongo
+    container_name: chatdb 
+    ports: 
+      - 27017:27017
+
