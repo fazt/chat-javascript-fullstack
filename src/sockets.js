@@ -6,7 +6,7 @@ export default io => {
 
   io.on('connection', async socket => {
 
-    let messages = await Chat.find({}).limit(8).sort('-created');
+    let messages = await Chat.find({ limit: 8, sort: '-created' });
 
     socket.emit('load old msgs', messages);
 
@@ -43,11 +43,10 @@ export default io => {
           cb('Error! Please enter your message');
         }
       } else {
-        var newMsg = new Chat({
+        await Chat.save({
           msg,
           nick: socket.nickname
         });
-        await newMsg.save();
       
         io.sockets.emit('new message', {
           msg,

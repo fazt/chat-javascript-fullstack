@@ -1,11 +1,18 @@
-import mongoose from "mongoose";
-import { MONGODB_URI } from "./config.js";
+import pkg from 'pg';
+const { Pool } = pkg;
+import { DATABASE_URL } from "./config.js";
 
+const pool = new Pool({
+  connectionString: DATABASE_URL,
+});
+
+// Initialize database
 (async () => {
   try {
-    const db = await mongoose.connect(MONGODB_URI);
-    console.log("connected to db:", db.connection.name);
+    console.log("Connected to PostgreSQL database");
   } catch (error) {
-    console.error(error);
+    console.error("Database connection error:", error);
   }
 })();
+
+export default pool;

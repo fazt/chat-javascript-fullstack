@@ -2,8 +2,11 @@ version: "3.8"
 
 services:
   chatdb:
-    image: mongo
+    image: postgres:15
     container_name: chatdb 
+    environment:
+      POSTGRES_DB: chat_app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports: 
-      - 27017:27017
-
+      - 5432:5432

@@ -7,7 +7,7 @@ is a simple chat that was built with entire javascript technologies, for the fro
 - Nodejs
   - Express
   - Socket.io
-- Mongodb
+- PostgreSQL
 
 ## Install Project
 
@@ -20,16 +20,26 @@ npm install
 ## Create .env file
 
 ```bash
-MONGODB_URI=mongodb://localhost/chat
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/chat_app
 ```
 
-Remember to replace the MONGODB_URI with your own MongoDB URI.
+Remember to replace the DATABASE_URL with your own PostgreSQL URI.
 
 ## Run the project
 
 ```bash
 npm run dev
 ```
+
+### Docker Compose
+
+```bash
+docker compose up -d
+
+docker exec -it chatdb psql -U postgres -d chat_app
+```
+
+then in order to create the tables, paste the content of the database/db.sql file and run it.
 
 # Links and Resources used in this project
 
