@@ -17,6 +17,14 @@ cd chat-javascript-fullstack
 npm install
 ```
 
+## Create .env file
+
+```bash
+MONGODB_URI=mongodb://localhost/chat
+```
+
+Remember to replace the MONGODB_URI with your own MongoDB URI.
+
 ## Run the project
 
 ```bash
