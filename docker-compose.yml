@@ -8,5 +8,15 @@ services:
       POSTGRES_DB: chat_app
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports: 
       - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./database/pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./database/db.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+volumes:
+  postgres_data:
