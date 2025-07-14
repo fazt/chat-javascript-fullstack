@@ -7,7 +7,7 @@ const app = express();
 app.set("port", process.env.PORT || 3000);
 
 // static files
-app.use(express.static(path.join(import.meta.dirname, "public")));
+app.use(express.static(path.join(import.meta.dirname, "../public")));
 
 // starting the server
 export default app;
